@@ -7,7 +7,7 @@ browser-based novel downloader for 📖🐰 (stable)
   
 ## Features
 
--   📖🐰 북토끼 소설 다운로드
+-   📖🐰 소설 다운로드
 -   자동 파일 병합 기능
 -   브라우저 콘솔/북마크를 통한 빠른 실행
 -   프로그램 설치 불필요
