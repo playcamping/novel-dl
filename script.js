@@ -456,7 +456,7 @@ async function downloadNovel(title, episodeLinks, startEpisode, endEpisode, dela
     });
     
     const contactLink = document.createElement('a');
-    contactLink.href = 'mailto:playcamping@gmail.com';
+    contactLink.href = 'mailto:yeorinhieut@gmail.com';
     contactLink.textContent = '개발자에게 연락하기';
     Object.assign(contactLink.style, {
         color: '#666',
@@ -484,7 +484,7 @@ async function downloadNovel(title, episodeLinks, startEpisode, endEpisode, dela
     
     // Add issue reporting link
     const issueLink = document.createElement('a');
-    issueLink.href = 'https://github.com/playcamping/novel-dl/issues';
+    issueLink.href = 'https://github.com/yeorinhieut/novel-dl/issues';
     issueLink.textContent = '오류 제보하기';
     issueLink.target = '_blank'; // Open in new tab
     Object.assign(issueLink.style, {
@@ -539,7 +539,7 @@ async function downloadNovel(title, episodeLinks, startEpisode, endEpisode, dela
         
         // Initialize the progress tracker
         const progressTracker = createProgressTracker(totalEpisodes);
-        let novelText = `${title}\n\nDownloaded with novel-dl,\nhttps://github.com/playcamping/novel-dl\n\n`;
+        let novelText = `${title}\n\nDownloaded with novel-dl,\nhttps://github.com/yeorinhieut/novel-dl\n\n`;
         let completedEpisodes = 0;
         let failedEpisodes = 0;
         let captchaCount = 0;
@@ -548,7 +548,7 @@ async function downloadNovel(title, episodeLinks, startEpisode, endEpisode, dela
         
         for (let i = startingIndex; i >= endingIndex; i--) {
             const episodeUrl = episodeLinks[i];
-            if (!episodeUrl.startsWith('https://newtoki1')) {
+            if (!episodeUrl.startsWith('https://sbxh')) {
                 failedEpisodes++;
                 continue;
             }
@@ -561,7 +561,7 @@ async function downloadNovel(title, episodeLinks, startEpisode, endEpisode, dela
             if (!result) {
                 captchaCount++;
                 statusElement.textContent = `⚠️ CAPTCHA 감지됨! ${episodeNumber}화를 처리할 수 없습니다.`;
-                showAlertWithSound(`CAPTCHA가 발견되었습니다! 다운로드를 중단합니다.`, 'https://raw.githubusercontent.com/playcamping/novel-dl/main/dodo.mp3');
+                showAlertWithSound(`CAPTCHA가 발견되었습니다! 다운로드를 중단합니다.`, 'https://raw.githubusercontent.com/656564/novel-dl/main/dodo.mp3');
                 break;
             }
 
@@ -717,12 +717,12 @@ async function downloadNovel(title, episodeLinks, startEpisode, endEpisode, dela
             
             completionContent.appendChild(downloadBtn);
             
-            const audio = new Audio('https://raw.githubusercontent.com/playcamping/novel-dl/main/dodo.mp3');
+            const audio = new Audio('https://raw.githubusercontent.com/656564/novel-dl/main/dodo.mp3');
             audio.play();
 
             // Developer contact link
             const contactLink = document.createElement('a');
-            contactLink.href = 'mailto:playcamping@gmail.com';
+            contactLink.href = 'mailto:yeorinhieut@gmail.com';
             contactLink.textContent = '개발자에게 연락하기';
             Object.assign(contactLink.style, {
                 display: 'inline-block',
@@ -752,7 +752,7 @@ async function downloadNovel(title, episodeLinks, startEpisode, endEpisode, dela
             
             // Add issue reporting link
             const issueLink = document.createElement('a');
-            issueLink.href = 'https://github.com/playcamping/novel-dl/issues';
+            issueLink.href = 'https://github.com/yeorinhieut/novel-dl/issues';
             issueLink.textContent = '오류 제보하기';
             issueLink.target = '_blank'; // Open in new tab
             Object.assign(issueLink.style, {
@@ -813,33 +813,8 @@ function showNotification(title, message) {
 }
 
 function extractTitle() {
-    // 1순위: .page-title 안의 h2 > span 구조 탐색 (현재 사이트 구조)
-    const titleSpan = document.querySelector('.page-title h2 span');
-    if (titleSpan && titleSpan.textContent.trim()) {
-        return titleSpan.textContent.replace(/\s+/g, ' ').trim();
-    }
-
-    // 2순위: span 태그가 없을 경우 h2 자체를 탐색
-    const titleH2 = document.querySelector('.page-title h2');
-    if (titleH2 && titleH2.textContent.trim()) {
-        return titleH2.textContent.replace(/\s+/g, ' ').trim();
-    }
-
-    // 3순위: 기존 XPath 구조 (다른 페이지 호환용 폴백)
-    const fallbackElement = document.evaluate(
-        '//*[@id="content_wrapper"]/div[1]/span',
-        document,
-        null,
-        XPathResult.FIRST_ORDERED_NODE_TYPE,
-        null
-    ).singleNodeValue;
-
-    if (fallbackElement && fallbackElement.textContent.trim()) {
-        return fallbackElement.textContent.trim();
-    }
-
-    console.error('소설 제목 요소를 찾을 수 없습니다.');
-    return null;
+    const titleElement = document.evaluate('//*[@id="content_wrapper"]/div[1]/span', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+    return titleElement ? titleElement.textContent.trim() : null;
 }
 
 function extractEpisodeLinks() {
@@ -867,7 +842,7 @@ async function fetchPage(url) {
 }
 
 async function runCrawler() {
-    const novelPageRule = 'https://newtoki1';
+    const novelPageRule = 'https://sbxh';
     let currentUrl = window.location.href;
 
     // Clean URL
@@ -1291,7 +1266,7 @@ async function runCrawler() {
         });
         
         const contactLink = document.createElement('a');
-        contactLink.href = 'mailto:playcamping@gmail.com';
+        contactLink.href = 'mailto:yeorinhieut@gmail.com';
         contactLink.textContent = '개발자에게 연락하기';
         Object.assign(contactLink.style, {
             color: '#666',
@@ -1319,7 +1294,7 @@ async function runCrawler() {
         
         // Add issue reporting link
         const issueLink = document.createElement('a');
-        issueLink.href = 'https://github.com/playcamping/novel-dl/issues';
+        issueLink.href = 'https://github.com/yeorinhieut/novel-dl/issues';
         issueLink.textContent = '오류 제보하기';
         issueLink.target = '_blank'; // Open in new tab
         Object.assign(issueLink.style, {
