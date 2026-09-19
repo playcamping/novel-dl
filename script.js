@@ -813,8 +813,33 @@ function showNotification(title, message) {
 }
 
 function extractTitle() {
-    const titleElement = document.evaluate('//*[@id="content_wrapper"]/div[1]/span', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-    return titleElement ? titleElement.textContent.trim() : null;
+    // 1순위: .page-title 안의 h2 > span 구조 탐색 (현재 사이트 구조)
+    const titleSpan = document.querySelector('.page-title h2 span');
+    if (titleSpan && titleSpan.textContent.trim()) {
+        return titleSpan.textContent.replace(/\s+/g, ' ').trim();
+    }
+
+    // 2순위: span 태그가 없을 경우 h2 자체를 탐색
+    const titleH2 = document.querySelector('.page-title h2');
+    if (titleH2 && titleH2.textContent.trim()) {
+        return titleH2.textContent.replace(/\s+/g, ' ').trim();
+    }
+
+    // 3순위: 기존 XPath 구조 (다른 페이지 호환용 폴백)
+    const fallbackElement = document.evaluate(
+        '//*[@id="content_wrapper"]/div[1]/span',
+        document,
+        null,
+        XPathResult.FIRST_ORDERED_NODE_TYPE,
+        null
+    ).singleNodeValue;
+
+    if (fallbackElement && fallbackElement.textContent.trim()) {
+        return fallbackElement.textContent.trim();
+    }
+
+    console.error('소설 제목 요소를 찾을 수 없습니다.');
+    return null;
 }
 
 function extractEpisodeLinks() {
