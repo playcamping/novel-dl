@@ -456,7 +456,7 @@ async function downloadNovel(title, episodeLinks, startEpisode, endEpisode, dela
     });
     
     const contactLink = document.createElement('a');
-    contactLink.href = 'mailto:yeorinhieut@gmail.com';
+    contactLink.href = 'mailto:playcamping@gmail.com';
     contactLink.textContent = '개발자에게 연락하기';
     Object.assign(contactLink.style, {
         color: '#666',
@@ -484,7 +484,7 @@ async function downloadNovel(title, episodeLinks, startEpisode, endEpisode, dela
     
     // Add issue reporting link
     const issueLink = document.createElement('a');
-    issueLink.href = 'https://github.com/yeorinhieut/novel-dl/issues';
+    issueLink.href = 'https://github.com/playcamping/novel-dl/issues';
     issueLink.textContent = '오류 제보하기';
     issueLink.target = '_blank'; // Open in new tab
     Object.assign(issueLink.style, {
@@ -539,7 +539,7 @@ async function downloadNovel(title, episodeLinks, startEpisode, endEpisode, dela
         
         // Initialize the progress tracker
         const progressTracker = createProgressTracker(totalEpisodes);
-        let novelText = `${title}\n\nDownloaded with novel-dl,\nhttps://github.com/yeorinhieut/novel-dl\n\n`;
+        let novelText = `${title}\n\nDownloaded with novel-dl,\nhttps://github.com/playcamping/novel-dl\n\n`;
         let completedEpisodes = 0;
         let failedEpisodes = 0;
         let captchaCount = 0;
@@ -548,7 +548,7 @@ async function downloadNovel(title, episodeLinks, startEpisode, endEpisode, dela
         
         for (let i = startingIndex; i >= endingIndex; i--) {
             const episodeUrl = episodeLinks[i];
-            if (!episodeUrl.startsWith('https://newtoki')) {
+            if (!episodeUrl.startsWith('https://newtoki1')) {
                 failedEpisodes++;
                 continue;
             }
@@ -561,7 +561,7 @@ async function downloadNovel(title, episodeLinks, startEpisode, endEpisode, dela
             if (!result) {
                 captchaCount++;
                 statusElement.textContent = `⚠️ CAPTCHA 감지됨! ${episodeNumber}화를 처리할 수 없습니다.`;
-                showAlertWithSound(`CAPTCHA가 발견되었습니다! 다운로드를 중단합니다.`, 'https://raw.githubusercontent.com/656564/novel-dl/main/dodo.mp3');
+                showAlertWithSound(`CAPTCHA가 발견되었습니다! 다운로드를 중단합니다.`, 'https://raw.githubusercontent.com/playcamping/novel-dl/main/dodo.mp3');
                 break;
             }
 
@@ -717,12 +717,12 @@ async function downloadNovel(title, episodeLinks, startEpisode, endEpisode, dela
             
             completionContent.appendChild(downloadBtn);
             
-            const audio = new Audio('https://raw.githubusercontent.com/656564/novel-dl/main/dodo.mp3');
+            const audio = new Audio('https://raw.githubusercontent.com/playcamping/novel-dl/main/dodo.mp3');
             audio.play();
 
             // Developer contact link
             const contactLink = document.createElement('a');
-            contactLink.href = 'mailto:yeorinhieut@gmail.com';
+            contactLink.href = 'mailto:playcamping@gmail.com';
             contactLink.textContent = '개발자에게 연락하기';
             Object.assign(contactLink.style, {
                 display: 'inline-block',
@@ -752,7 +752,7 @@ async function downloadNovel(title, episodeLinks, startEpisode, endEpisode, dela
             
             // Add issue reporting link
             const issueLink = document.createElement('a');
-            issueLink.href = 'https://github.com/yeorinhieut/novel-dl/issues';
+            issueLink.href = 'https://github.com/playcamping/novel-dl/issues';
             issueLink.textContent = '오류 제보하기';
             issueLink.target = '_blank'; // Open in new tab
             Object.assign(issueLink.style, {
@@ -842,7 +842,7 @@ async function fetchPage(url) {
 }
 
 async function runCrawler() {
-    const novelPageRule = 'https://newtoki';
+    const novelPageRule = 'https://newtoki1';
     let currentUrl = window.location.href;
 
     // Clean URL
@@ -1266,7 +1266,7 @@ async function runCrawler() {
         });
         
         const contactLink = document.createElement('a');
-        contactLink.href = 'mailto:yeorinhieut@gmail.com';
+        contactLink.href = 'mailto:playcamping@gmail.com';
         contactLink.textContent = '개발자에게 연락하기';
         Object.assign(contactLink.style, {
             color: '#666',
@@ -1294,7 +1294,7 @@ async function runCrawler() {
         
         // Add issue reporting link
         const issueLink = document.createElement('a');
-        issueLink.href = 'https://github.com/yeorinhieut/novel-dl/issues';
+        issueLink.href = 'https://github.com/playcamping/novel-dl/issues';
         issueLink.textContent = '오류 제보하기';
         issueLink.target = '_blank'; // Open in new tab
         Object.assign(issueLink.style, {
