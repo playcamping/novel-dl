@@ -548,7 +548,7 @@ async function downloadNovel(title, episodeLinks, startEpisode, endEpisode, dela
         
         for (let i = startingIndex; i >= endingIndex; i--) {
             const episodeUrl = episodeLinks[i];
-            if (!episodeUrl.startsWith('https://booktoki')) {
+            if (!episodeUrl.startsWith('https://newtoki')) {
                 failedEpisodes++;
                 continue;
             }
